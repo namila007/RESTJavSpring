@@ -1,4 +1,4 @@
-package hello.Model;
+package hello;
 
 public class Greeting {
 
