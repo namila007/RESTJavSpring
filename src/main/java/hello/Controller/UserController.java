@@ -20,28 +20,31 @@ public class UserController
 
 	//GET a user from ID
 	@GetMapping("/{id}")
-	public ResponseEntity<?> showbyId(@PathVariable(value = "id") int id )
+	public ResponseEntity<?> showbyId( @PathVariable(value = "id") int id )
 	{
-		return new ResponseEntity<User>(userService.getUser( id ), HttpStatus.OK) ;
+		return new ResponseEntity<User>( userService.getUser( id ), HttpStatus.OK );
 	}
 
 	//GET get all users list
 	@GetMapping()
-    public ResponseEntity<List<User>> getAllUsers() {
-        return new ResponseEntity<List<User>>(userService.getAll(),HttpStatus.OK);
-    }
+	public ResponseEntity<List<User>> getAllUsers()
+	{
+		return new ResponseEntity<List<User>>( userService.getAll(), HttpStatus.OK );
+	}
 
-    //POST create a new user
+	//POST create a new user
 	@PostMapping()
-    public ResponseEntity<?> addUser( @RequestBody User user) {
+	public ResponseEntity<?> addUser( @RequestBody User user )
+	{
 
-	    return new ResponseEntity<User>(userService.addUser(user), HttpStatus.CREATED);
-    }
+		return new ResponseEntity<User>( userService.addUser( user ), HttpStatus.CREATED );
+	}
 
-    //Delete User
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletUserbyId(@PathVariable(value="id") int id) {
-	    return new ResponseEntity<User>(userService.deletUserbyId(id), HttpStatus.OK);
-    }
+	//Delete User
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deletUserbyId( @PathVariable(value = "id") int id )
+	{
+		return new ResponseEntity<User>( userService.deletUserbyId( id ), HttpStatus.OK );
+	}
 
 }

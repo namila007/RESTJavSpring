@@ -22,7 +22,7 @@ public class UserService
 
 	public User addUser( User user )
 	{
-        user.setId(userList.size());
+		user.setId( userList.size() );
 		userList.add( user );
 		return user;
 	}
@@ -32,11 +32,13 @@ public class UserService
 		return userList.get( id );
 	}
 
-	public List<User> getAll () {
-	    return userList;
-    }
+	public List<User> getAll()
+	{
+		return userList;
+	}
 
-    public User deletUserbyId(int id) {
-	    return userList.remove(id);
-    }
+	public User deletUserbyId( int id )
+	{
+		return userList.remove( id );
+	}
 }
