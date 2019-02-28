@@ -14,7 +14,7 @@ public class Profile
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String name;
-	private int id;
+	private Integer id;
 	private String email;
 }
 
