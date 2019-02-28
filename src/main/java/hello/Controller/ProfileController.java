@@ -17,7 +17,7 @@ public class ProfileController
 	@Autowired
 	private ProfileService profileService;
 
-	//POST create new profile
+	//POST create new profilev
 	@PostMapping
 	public ResponseEntity<?> addProfile( @RequestBody Profile profile )
 	{
