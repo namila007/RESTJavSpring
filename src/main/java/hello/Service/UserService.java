@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Component
 public class UserService
 {
 	private static List<User> userList;
-	private static int userID;
+
 
 	public UserService()
 	{
@@ -20,14 +20,25 @@ public class UserService
 
 	}
 
-	public int addUser( String name )
+	public User addUser( User user )
 	{
-		userList.add( new User( name, userList.size() ) );
-		return userList.size();
+		user.setId( userList.size() );
+		userList.add( user );
+		return user;
 	}
 
 	public User getUser( int id )
 	{
 		return userList.get( id );
+	}
+
+	public List<User> getAll()
+	{
+		return userList;
+	}
+
+	public User deletUserbyId( int id )
+	{
+		return userList.remove( id );
 	}
 }

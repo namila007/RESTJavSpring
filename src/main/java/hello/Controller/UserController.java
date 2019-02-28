@@ -3,24 +3,48 @@ package hello.Controller;
 import hello.Model.User;
 import hello.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/users/")
+@RequestMapping("/users")
 public class UserController
 {
 
-	private static final String USER_END_POINT = "/user/";
 
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("{id}")
-	public User showbyId( @RequestParam(value = "id") int id )
+	//GET a user from ID
+	@GetMapping("/{id}")
+	public ResponseEntity<?> showbyId( @PathVariable(value = "id") int id )
 	{
-		return userService.getUser( id );
+		return new ResponseEntity<User>( userService.getUser( id ), HttpStatus.OK );
 	}
+
+	//GET get all users list
+	@GetMapping()
+	public ResponseEntity<List<User>> getAllUsers()
+	{
+		return new ResponseEntity<List<User>>( userService.getAll(), HttpStatus.OK );
+	}
+
+	//POST create a new user
+	@PostMapping()
+	public ResponseEntity<?> addUser( @RequestBody User user )
+	{
+
+		return new ResponseEntity<User>( userService.addUser( user ), HttpStatus.CREATED );
+	}
+
+	//Delete User
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deletUserbyId( @PathVariable(value = "id") int id )
+	{
+		return new ResponseEntity<User>( userService.deletUserbyId( id ), HttpStatus.OK );
+	}
+
 }
